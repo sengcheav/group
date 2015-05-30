@@ -48,16 +48,22 @@ passwordHash(usr[id].password).hash(function(error, hash) {
  
     // Store hash (incl. algorithm, iterations, and salt) 
     usr[id].hash = hash;
+    query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [usr[id].usrname, usr[id].hash], function (err){
+        if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
+        //else {console.log ("inserting successs") ; res.redirect('/');}
+});	
+
 });
  
 }
-console.log("hash Stroed");
+//console.log("hash Stroed");
+/*
 for (var id = 0 ; id < 4 ; id++ ){ 
 query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [usr[id].usrname, usr[id].hash], function (err){
 	if(err) { console.log("error in inserting"); res.send(err.message) ; }
 	//else {console.log ("inserting successs") ; res.redirect('/');}
 });
-}
+}*/
 console.log ("hash in DB");
 res.redirect ('/');
 });
