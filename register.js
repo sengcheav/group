@@ -41,7 +41,7 @@ var usr = [
         {username : 'seng3', password : 'invalid3'}
 
 ];
-for (var i = 0 ; i < 4 ; i++ ){
+for (var id = 0 ; id < 4 ; id++ ){
 passwordHash(usr[id].password).hash(function(error, hash) {
     if(error)
         throw new Error('Something went wrong!');
@@ -52,7 +52,7 @@ passwordHash(usr[id].password).hash(function(error, hash) {
  
 }
 console.log("hash Stroed");
-for (var i = 0 ; i < 4 ; i++ ){ 
+for (var id = 0 ; id < 4 ; id++ ){ 
 query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [usr[id].username, user[id].hash], function (err){
 	if(err) { console.log("error in inserting"); res.send(err.message) ; }
 	//else {console.log ("inserting successs") ; res.redirect('/');}
