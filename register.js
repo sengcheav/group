@@ -32,6 +32,12 @@ app.get('/' , function(req, res){
 
 });
 
+app.post('/login' , function(req, res){
+console.log(req.username,  req.password) ;
+res.send("df");
+
+});
+
 // use PORT set as an environment variable
 var server = app.listen(process.env.PORT, function() {
     console.log('Listening on port %d', server.address().port);

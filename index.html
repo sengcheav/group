@@ -27,7 +27,7 @@
 		        <input type="password" name="password" id= "password" placeholder="Password"/>
 		    </div>
 		    <div>
-		        <input type="submit" value="Log In" id ="button"/>
+		        <input type="submit" value="Log In" id ="in"/>
 		    </div>
 
 		</form> 
@@ -40,14 +40,15 @@
 $(document).ready(function() {
 	$.ajaxSetup ({ cache: false
 	});
-	$("#button").bind("click", function (event, ui){
-		//var url ="http://stark-sea-8865.herokuapp.com/3";
-		//var username = $("#name").val();
-		//var password =$("#password").val();
-		//$.post(url, username, passworld, function()'json');
-		if(!"#name"){ alert("please enter your username");}
-		else if(!"#password"){ alert("please enter your password");}
-		else { $("formid").submit();}
+	$("#in").bind("click", function (event, ui){
+		var url ="https://floating-beyond-1695.herokuapp.com/login";
+	        var user ;
+		user.username = $("#name").val();
+		user.password =$("#password").val();
+		$.post(url, user, 'json');
+		//if(!"#name"){ alert("please enter your username");}
+		//else if(!"#password"){ alert("please enter your password");}
+		//else { $("formid").submit();}
 	});
 	$("#button2").bind("click", function (event, ui){
 		//var url ="http://stark-sea-8865.herokuapp.com/3";
@@ -60,5 +61,4 @@ $(document).ready(function() {
 </script>		 
 
 	 </body>	 </html>
-
 
