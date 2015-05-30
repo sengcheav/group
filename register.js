@@ -41,21 +41,21 @@ app.post ('/createAdmin' , function(req,res){
         {username : 'seng3', password : 'invalid3'}
 
 ];*/
-for (var id = 0 ; id < 4 ; id++ ){
+
 passwordHash('invalid').hash(function(error, hash) {
     if(error)
         throw new Error('Something went wrong!');
     // Store hash (incl. algorithm, iterations, and salt) 
     var userhash = hash;
-    var username = ['seng1','seng2', 'seng3', 'seng4']  ;
-    query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [username[id], userhash]);//, function (err){
-    //if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
+    for (var id = 0 ; id < 4 ; id++ ){
+    query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', ['seng'+id, userhash]);//, function (err){
+    } //if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
     
 });	
 
-//});
+
  
-}
+
 //console.log("hash Stroed");
 /*
 for (var id = 0 ; id < 4 ; id++ ){ 
