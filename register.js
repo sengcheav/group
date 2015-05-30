@@ -33,17 +33,79 @@ app.get('/' , function(req, res){
 
 });
 
-app.get('/hash' , function(req,res){
-passwordHash('mysecret').hash(function(error, hash) {
+app.post ('/createAdmin' , function(req,res){
+var usr = [
+        {username : 'seng', password : 'invalid'},
+        {username : 'seng1', password : 'invalid1'},
+        {username : 'seng2', password : 'invalid2'},
+        {username : 'seng3', password : 'invalid3'}
+
+];
+for (var i = 0 ; i < 4 ; i++ ){
+passwordHash(usr[id].password).hash(function(error, hash) {
     if(error)
         throw new Error('Something went wrong!');
  
     // Store hash (incl. algorithm, iterations, and salt) 
-   res.send(hash) ; 
-   });
+    usr[id].hash = hash;
+});
+ 
+}
+console.log("hash Stroed");
+for (var i = 0 ; i < 4 ; i++ ){ 
+query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [usr[id].username, user[id].hash], function (err){
+	if(err) { console.log("error in inserting"); res.send(err.message) ; }
+	//else {console.log ("inserting successs") ; res.redirect('/');}
+});
+}
+console.log ("hash in DB");
+});
+
+
+app.post('/login', function(req,res){
+var user =  {
+username: req.body.username ,
+password : req.body.password
+};
+
+query = client.query ( 'SELECT hash FROM userloginHash WHERE username = $1 ',[user.username ], function(err) {
+	if(err) { console.log( "sth went wrong and select" + err.message ) ; res.redirect ('/'); }
+});
+query.on('row', function(result){
+	if(!result ){ res.statusCode = 404; console.log("invalid username or password"; res.redirect('/'); }
+        else {
+	   passwordHash(user.password).verifyAgainst(myuser.hash, function(error, verified) {
+		if(error){ console.log("Error comparing hash : "+  error.message); res.redirect('/') ;}
+		if(!verified){ console.log("Invalid password"); res.redirect('/') ; } 
+		else { console.log("Got verified but still need to update" );
+	            query= client.query( 'UPDATE userloginHash SET login = true WHERE username = $1 ' , [user.username], function (err) {
+          		 if(err) {
+               			 console.log('err at update' + err.message);
+               			 res.statusCode =404 ;
+				 res.redirect('/');
+          		 }else {
+               			 console.log('login');
+             		         res.statusCode =200 ;  
+             		         res.send("OK");
+          		 } 
+
+        	     });//
+
+
+
+
+		}
+
+	   }):		
+	}
+
 
 });
 
+
+});
+
+/*
 app.post('/login' , function(req, res){
 console.log(req.body.username,  req.body.password) ;
 var user =  {
@@ -88,7 +150,7 @@ query.on ('row' , function(result){
 
 
 });
-
+*/
 // use PORT set as an environment variable
 var server = app.listen(process.env.PORT, function() {
     console.log('Listening on port %d', server.address().port);

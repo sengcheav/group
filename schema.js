@@ -14,11 +14,16 @@ var usr = [
 
 client = new pg.Client(connectionString);
 client.connect();
-query = client.query ('CREATE TABLE userlogin ( USERNAME VARCHAR(15) PRIMARY KEY , PASSWORD VARCHAR(15) , ID SERIAL UNIQUE ,  LOGIN BOOLEAN DEFAULT FALSE)'); 
-for ( var id = 0 ; id <4 ; id++){
+//query = client.query ('CREATE TABLE userlogin ( USERNAME VARCHAR(15) PRIMARY KEY , 
+PASSWORD VARCHAR(15) , ID SERIAL UNIQUE ,  LOGIN BOOLEAN DEFAULT FALSE)'); 
+//for ( var id = 0 ; id <4 ; id++){
+//
+//query = client.query('INSERT INTO userlogin (username , password) VALUES($1, $2)', 
+//[usr[id].username , usr[id].password]);
+//}
 
-query = client.query('INSERT INTO userlogin (username , password) VALUES($1, $2)', [usr[id].username , usr[id].password]);
-}
+query = client.query('CREATE TABLE userloginHash ( USERNAME VARCHAR(15) PRIMARY KEY, HASH BINARY(64), ID SERIAL UNIQUE, LOGIN BOOLEAN 
+DEFAULT FALSE)');
 query.on('end', function(result) { client.end(); });
 
 
