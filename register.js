@@ -68,7 +68,7 @@ query.on ('row' , function(result){
 
 	}
 
-res.send("df");
+//res.send("df");
 });
 
 
