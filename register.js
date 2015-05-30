@@ -62,7 +62,7 @@ query.on ('row' , function(result){
 	  });//
  	}else {
 	   res.statusCode =404 ;
-	   res.send("Error : invalide username or password "):
+	   res.send("Error : invalide username or password ");
 
 
 	}
