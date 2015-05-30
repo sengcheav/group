@@ -56,10 +56,8 @@ query.on ('row' , function(result){
 	  	res.send("OK");
 	   }
 
-	   });
-	}
-
-});
+	  });//
+ 	}
 
 res.send("df");
 
