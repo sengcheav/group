@@ -22,7 +22,7 @@ client.connect();
 //[usr[id].username , usr[id].password]);
 //}
 query = client.query('DROP TABLE userloginHash') ;
-query = client.query('CREATE TABLE userloginHash ( USERNAME VARCHAR(15) PRIMARY KEY, HASH CHAR(1024), ID SERIAL UNIQUE, LOGIN BOOLEAN DEFAULT FALSE)');
+query = client.query('CREATE TABLE userloginHash ( USERNAME VARCHAR(15) PRIMARY KEY, HASH CHAR(512), ID SERIAL UNIQUE, LOGIN BOOLEAN DEFAULT FALSE)');
 query.on('end', function(result) { client.end(); });
 
 
