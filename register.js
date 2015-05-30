@@ -29,18 +29,18 @@ app.use(express.static(__dirname));
 app.use(cors());
 
 app.get('/' , function(req, res){
-
-passwordHash('mysecret').hash(function(error, hash) {
-if(error)
-        throw new Error('Something went wrong!');
-   console.log("This is hash " + hash) ;
-//  res.sendfile('index.html');
-res.send(hash);
+     res.sendfile('index.html');
 
 });
 
-
-       // res.sendfile('index.html');
+app.get('/hash' , function(req,res){
+password('mysecret').hash(function(error, hash) {
+    if(error)
+        throw new Error('Something went wrong!');
+ 
+    // Store hash (incl. algorithm, iterations, and salt) 
+   res.send(hash) ; 
+   });
 
 });
 
