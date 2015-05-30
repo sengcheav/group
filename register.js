@@ -63,7 +63,7 @@ query.on ('row' , function(result){
 
 	  });//
  	}else {
-	   console.log('error result not 1', err.message);
+	   console.log('error result not 1', result);
 	   res.statusCode =404 ;
 	   //res.send("Error : invalide username or password ");
 	   res.redirect('/');
