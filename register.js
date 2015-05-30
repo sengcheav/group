@@ -33,7 +33,7 @@ app.get('/' , function(req, res){
 });
 
 app.post('/login' , function(req, res){
-console.log(req.username,  req.password) ;
+console.log(req.body.username,  req.body.password) ;
 res.send("df");
 
 });
