@@ -21,8 +21,8 @@ client.connect();
 //query = client.query('INSERT INTO userlogin (username , password) VALUES($1, $2)', 
 //[usr[id].username , usr[id].password]);
 //}
-
-query = client.query('CREATE TABLE userloginHash ( USERNAME VARCHAR(15) PRIMARY KEY, HASH CHAR(128), ID SERIAL UNIQUE, LOGIN BOOLEAN DEFAULT FALSE)');
+query = client.query('DROP TABLE userloginHash) ;
+query = client.query('CREATE TABLE userloginHash ( USERNAME VARCHAR(15) PRIMARY KEY, HASH CHAR(256), ID SERIAL UNIQUE, LOGIN BOOLEAN DEFAULT FALSE)');
 query.on('end', function(result) { client.end(); });
 
 
