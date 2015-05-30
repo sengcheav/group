@@ -81,7 +81,7 @@ query = client.query ( 'SELECT hash FROM userloginHash WHERE username = $1 ',[us
 query.on('row', function(result){
 	if(!result ){ res.statusCode = 404; console.log("invalid username or password"); res.redirect('/'); }
         else {
-	   passwordHash(user.password).verifyAgainst(myuser.hash, function(error, verified) {
+	   passwordHash(user.password).verifyAgainst(result.hash, function(error, verified) {
 		if(error){ console.log("Error comparing hash : "+  error.message); res.redirect('/') ;}
 		if(!verified){ console.log("Invalid password"); res.redirect('/') ; } 
 		else { console.log("Got verified but still need to update" );
