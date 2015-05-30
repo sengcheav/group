@@ -49,7 +49,7 @@ query = client.query ( 'SELECT COUNT(*) FROM userlogin WHERE username = $1 AND p
 });
 query.on ('row' , function(result){
 	if(result.count ==1 ) {
-	   query= client.query( 'UPDATE userlogin SET login = true WHERER username = $1 AND password = $2' , [user.username , user.password], function (err) { 
+	   query= client.query( 'UPDATE userlogin SET login = true WHERE username = $1 AND password = $2' , [user.username , user.password], function (err) { 
 	   if(err) {
 		console.log('err at update' + err.message);
 	   	res.statusCode =404 ; 
