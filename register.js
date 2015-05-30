@@ -53,7 +53,7 @@ passwordHash('seng'+id).hash(function(error, hash) {
     
 });	
 
-});
+//});
  
 }
 //console.log("hash Stroed");
