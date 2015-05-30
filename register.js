@@ -97,7 +97,7 @@ query.on('row', function(result){
 
 		}
 
-	   }):		
+	   });		
 	}
 
 
