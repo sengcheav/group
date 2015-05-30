@@ -34,10 +34,10 @@ app.get('/' , function(req, res){
 
 app.post('/login' , function(req, res){
 console.log(req.body.username,  req.body.password) ;
-var user {
+var user =  {
 username: req.body.username , 
 password : req.body.password
-}
+};
 
 query = client.query ( 'SELECT COUNT(*) FROM userlogin WHERE username = $1 AND password = $2' ,[user.username , user.password], function(err) {
 	if (err) {
