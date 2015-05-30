@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 // use cross origin resource sharing
 var cors = require('cors');
 
+var passwordHash = require('password-hash-and-salt'); 
 // instantiate app
 var app = express()
   , pg = require('pg').native
@@ -28,7 +29,18 @@ app.use(express.static(__dirname));
 app.use(cors());
 
 app.get('/' , function(req, res){
-        res.sendfile('index.html');
+
+passwordHash('mysecret').hash(function(error, hash) {
+if(error)
+        throw new Error('Something went wrong!');
+console.log(hash) ;
+  res.sendfile('index.html');
+
+
+});
+
+
+       // res.sendfile('index.html');
 
 });
 
