@@ -47,16 +47,16 @@ query = client.query ( 'SELECT COUNT(*) FROM userlogin WHERE username = $1 AND p
 });
 query.on ('row' , function(result){
 	if(result.count ==1 ) {
-//	   query= client.query( 'UPDATE userlogin SET login = true WHERER username = $1 AND password = $2' , [user.username , user.password, function (err) { 
- //	   if(err) {
-//	   	res.statusCode =404 ; 
-//		res.send("Error" + error.message) ; 
+	   query= client.query( 'UPDATE userlogin SET login = true WHERER username = $1 AND password = $2' , [user.username , user.password, function (err) { 
+	   if(err) {
+	   	res.statusCode =404 ; 
+		res.send("Error" + error.message) ; 
 
-//	   }else { res.statusCode =200 ; 
-//	  	res.send("OK");
-//	   }
+	   }else { res.statusCode =200 ; 
+	  	res.send("OK");
+	   }
 
-//	  });//
+	  });//
  	}
 
 res.send("df");
