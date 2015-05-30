@@ -34,7 +34,7 @@ app.get('/' , function(req, res){
 });
 
 app.get('/hash' , function(req,res){
-password('mysecret').hash(function(error, hash) {
+passwordHash('mysecret').hash(function(error, hash) {
     if(error)
         throw new Error('Something went wrong!');
  
