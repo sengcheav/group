@@ -41,6 +41,7 @@ password : req.body.password
 
 query = client.query ( 'SELECT COUNT(*) FROM userlogin WHERE username = $1 AND password = $2' ,[user.username , user.password], function(err) {
 	if (err) {
+	   console.log('error in finding user and password') ;
 	   res.statusCode = 404;
 	   res.send("Error 404 , Can not find user ") ;
 	}
@@ -50,14 +51,21 @@ query.on ('row' , function(result){
 	   query= client.query( 'UPDATE userlogin SET login = true WHERER username = $1 AND password = $2' , [user.username , user.password], function (err) { 
 	   if(err) {
 	   	res.statusCode =404 ; 
-	res.send("Error" + error.message) ; 
+		res.send("Error" + err.message) ; 
 
-	   }else { res.statusCode =200 ; 
+	   }else { 
+		
+		res.statusCode =200 ; 
 	  	res.send("OK");
 	   }
 
 	  });//
- 	}
+ 	}else {
+	   res.statusCode =404 ;
+	   res.send("Error : invalide username or password "):
+
+
+	}
 
 res.send("df");
 });
