@@ -48,9 +48,9 @@ passwordHash('seng'+id).hash(function(error, hash) {
     //console.log(usr[id]);
     // Store hash (incl. algorithm, iterations, and salt) 
     var userhash = hash;
-    query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', ['seng'+id, userhash], function (err){
-    if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
-    //else {console.log ("inserting successs") ; res.redirect('/');}
+    query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', ['seng'+id, userhash]);//, function (err){
+    //if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
+    
 });	
 
 });
