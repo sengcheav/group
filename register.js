@@ -116,7 +116,7 @@ query.on('row', function(result){
 app.get('/tokenTest', function (req, res){
 if(req.headers.accessToken != 'welcome to the nothing site'){res.statusCode =401 ; res.send('Unauthorize'); }
 else { res.statusCode =200 ; res.send('What the secret') ; }
-}
+});
 
 
 /*
