@@ -75,7 +75,7 @@ username: req.body.username ,
 password : req.body.password
 };
 
-query = client.query ( 'SELECT count(*) as count ,  hash FROM userloginHash WHERE username = $1 group by count ',[user.username ], function(err) {
+query = client.query ( 'SELECT count(*) as count ,  hash FROM userloginHash WHERE username = $1 group by hash ',[user.username ], function(err) {
 	if(err) { console.log( "sth went wrong and select" + err.message ) ; res.redirect ('/'); }
 });
 query.on('row', function(result){
