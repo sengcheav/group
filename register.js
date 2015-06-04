@@ -76,12 +76,14 @@ password : req.body.password
 };
 
 query = client.query ( 'SELECT count(*) as count ,  hash FROM userloginHash WHERE username = $1 group by hash ',[user.username ], function(err,results) {
+
 	if(err) { console.log( "sth went wrong and select" + err.message ) ; res.redirect ('/'); }
+	if(results.length < 1 ) { console.log(" null "); res.redirect('/'); }
 });
 query.on('row', function(result){
 	if(!result ){ res.statusCode = 404; console.log("invalid username or password"); res.redirect('/'); }
         else {console.log("result ------------------" + result.count) ; 
-	   if(results.length < 1 ) {console.log ("result is 0 ") ; res.statusCode = 404 ; res.redirect('/');}
+	  // if(results.length < 1 ) {console.log ("result is 0 ") ; res.statusCode = 404 ; res.redirect('/');}
 		passwordHash(user.password).verifyAgainst(result.hash, function(error, verified) {
 		if(error){ console.log("Error comparing hash : "+  error.message); res.statusCode = 400 ; res.redirect('/') ;}
 		if(!verified){ console.log("Invalid password"); res.statusCode = 404 ; res.redirect('/') ; } 
