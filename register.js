@@ -42,8 +42,10 @@ if (!result ){res.send("not found");}
 });
 query.on('row', function(result) { 
 
-if(!result) {res.send("life suck"); }
-else { res.send(result); }
+//if(!result) {res.send("life suck"); }
+//else {
+	 res.send(result); 
+	// }
 
   
 });
