@@ -44,7 +44,7 @@ query.on('row', function(result) {
 
 if(!result) {res.send("life suck"); }
 else { array.push(result) ;res.send(result); }
-if(array.length == 0) res.send("nothing");  
+
   
 });
 
