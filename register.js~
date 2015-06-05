@@ -42,7 +42,7 @@ if(result.length == 0 ) res.send("ERROR 404: " );
 });
 query.on('row', function(result) { 
 
-else if(!result) {res.send("life suck"); }
+if(!result) {res.send("life suck"); }
 else { array.push(row) ;res.send(result); }
 if(array.length == 0) res.send("nothing");  
   
