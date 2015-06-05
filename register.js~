@@ -39,7 +39,11 @@ if (err ){console.log("error" +err.message);}
 if(result.length == 0 ) res.send("ERROR 404: " );
 
 });
-query.on('row', function(result) { res.send(result); });
+query.on('row', function(result) { 
+if(!result) {res.send("life suck"); }
+else { res.send(result.length); }
+
+});
 
 })
 
