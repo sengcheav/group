@@ -44,7 +44,7 @@ query.on('row', function(err ,  result) {
 if( err ) {res.send(err.message ); }
 else if(!result) {res.send("life suck"); }
 else { res.send(result); }
-
+  // 
 });
 
 })
