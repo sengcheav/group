@@ -35,7 +35,8 @@ app.get('/' , function(req, res){
 
 app.get('/:name/check' , function (req, res){
 var array = []; 	
-query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (result){
+query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (err ,result){
+if(err){res.send(err.message); }
 if (!result ){res.send("fff");}
 
 });
