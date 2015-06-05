@@ -59,8 +59,7 @@ if (err ){console.log("error" +err.message);}
 if(result.length == 0 ) res.send("ERROR 404: " );
 
 });
-query.on('row', result){res.send (result) ; }
-
+query.on('row', function(result) { res.send(result); });
 
 })
  
