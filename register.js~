@@ -39,7 +39,7 @@ query = client.query('SELECT username FROM userloginHash WHERE username = $1', [
 query.on('row', function(result) { 
 
 if(!result) {res.send("life suck"); }
-else { array.push(row) ;res.send(result); }
+else { array.push(result) ;res.send(result); }
 if(array.length == 0) res.send("nothing");  
   
 });
