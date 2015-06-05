@@ -118,7 +118,7 @@ query.on('row', function( result){
 
 
 });
-
+query.on('end', function (result) { res.send("no") ; });
 
 });
 
