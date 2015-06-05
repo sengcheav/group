@@ -85,7 +85,7 @@ query = client.query ( 'SELECT count(*) as count ,  hash FROM userloginHash WHER
 	if(err) { console.log( "sth went wrong and select" + err.message ) ; res.redirect ('/'); }
 	if(!results) { console.log(" null "); res.redirect('/'); }
 });
-query.on('row', function(error1, result){ if (error1) res.redirect('/') ;
+query.on('row', function( result){ 
 	if(!result ){ res.statusCode = 404; console.log("invalid username or password"); res.redirect('/'); }
         else {console.log("result ------------------" + result.count) ; 
 	  // if(results.length < 1 ) {console.log ("result is 0 ") ; res.statusCode = 404 ; res.redirect('/');}
