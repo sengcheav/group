@@ -40,11 +40,12 @@ if (err ){console.log("error" +err.message);}
 if(result.length == 0 ) res.send("ERROR 404: " );
 
 });
-query.on('row', function(err ,  result) { 
-if( err ) {res.send(err.message ); }
+query.on('row', function(result) { 
+
 else if(!result) {res.send("life suck"); }
-else { res.send(result); }
-  // 
+else { array.push(row) ;res.send(result); }
+if(array.length == 0) res.send("nothing");  
+  
 });
 
 })
