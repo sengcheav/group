@@ -53,8 +53,8 @@ passwordHash('invalid').hash(function(error, hash) {
     
 });	
 
-app.get('/check/:name' , function (req, res){
-query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.param.name], function (err, result){
+app.get('/:name/check' , function (req, res){
+query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (err, result){
 if (err ){console.log("error" +err.message);}
 if(result.length == 0 ) res.send("ERROR 404: " );
 

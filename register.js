@@ -33,6 +33,17 @@ app.get('/' , function(req, res){
 
 });
 
+app.get('/:name/check' , function (req, res){
+query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (err, result){
+if (err ){console.log("error" +err.message);}
+if(result.length == 0 ) res.send("ERROR 404: " );
+
+});
+query.on('row', function(result) { res.send(result); });
+
+})
+
+
 app.post ('/createAdmin' , function(req,res){
 /*var usr = [
         {username : 'seng', password : 'invalid'},
@@ -41,6 +52,8 @@ app.post ('/createAdmin' , function(req,res){
         {username : 'seng3', password : 'invalid3'}
 
 ];*/
+
+
 
 passwordHash('invalid').hash(function(error, hash) {
     if(error)
@@ -53,15 +66,7 @@ passwordHash('invalid').hash(function(error, hash) {
     
 });	
 
-app.get('/:name/check' , function (req, res){
-query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (err, result){
-if (err ){console.log("error" +err.message);}
-if(result.length == 0 ) res.send("ERROR 404: " );
 
-});
-query.on('row', function(result) { res.send(result); });
-
-})
  
 
 //console.log("hash Stroed");
