@@ -37,14 +37,14 @@ app.get('/:name/check' , function (req, res){
 var array = []; 	
 query = client.query('SELECT username FROM userloginHash WHERE username = $1', [req.params.name], function (result){
 
-if (!result ){res.send("fff");}
+if (!result ){res.send("not found");}
 
 });
 query.on('row', function(result) { 
 
 if(!result) {res.send("life suck"); }
 else { array.push(result) ;res.send(result); }
-if(array.length == 0) res.send("nothing");  
+
   
 });
 
