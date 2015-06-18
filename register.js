@@ -57,18 +57,6 @@ passwordHash('invalid').hash(function(error, hash) {
     } //if(err) { console.log("error in inserting"+ err.message); res.send(err.message) ; }
     
 });	
-
-
- 
-
-//console.log("hash Stroed");
-/*
-for (var id = 0 ; id < 4 ; id++ ){ 
-query = client.query('INSERT INTO userloginHash (username ,hash) VALUES($1, $2)', [usr[id].usrname, usr[id].hash], function (err){
-	if(err) { console.log("error in inserting"); res.send(err.message) ; }
-	//else {console.log ("inserting successs") ; res.redirect('/');}
-});
-}*/
 console.log ("hash in DB");
 res.redirect ('/');
 });
@@ -121,12 +109,13 @@ query.on('row', function( result){
 
 
 });
-
+// hasnt work yet 
 app.get('/tokenTest', function (req, res){
 if(req.headers.accessToken != 'welcome to the nothing site'){res.statusCode =401 ; res.send('Unauthorize'); }
 else { res.statusCode =200 ; res.send('What the secret') ; }
 });
 
+â‰
 
 
 // use PORT set as an environment variable
