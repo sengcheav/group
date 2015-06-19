@@ -60,20 +60,22 @@ level : req.params.id
 
 query = client.query('SELECT lvl_best[$1] AS best FROM rank WHERE username = $2', [req.params.lvl, username]);  
 query.on("err", function(err) {
+console.log("select error");
 return res.send("error: ", err.message);
 })
 
 query.on("row", function(result){
- if(!result){ res.send("NO"); }
+ if(!result){console.log("!result") ;  res.send("NO"); }
  else {
-    if(result.best < point) {
+    if(result.best < point) { console.log("result.best < point) ; 
        client.query ('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]= $2, totalpoints += $3',[req.params.lvl, point,(point-result.best)], funtion(err){
-       if(err) res.send(err.message) ;	
+       if(err){console.log(err.message) ; res.send(err.message) ;}	
+       console.log("updated"); 
        res.send( 'UPDATED' ) ;	
 
        });
     }//if--
-    else { res.send ('Do not need to update") ;}
+    else { console.log ("do not to update ") ; res.send ('Do not need to update") ;}
 
 
  }//else--

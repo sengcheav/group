@@ -1,0 +1,29 @@
+HTTP/1.1 407 Proxy Authentication Required
+Server: squid/3.5.2
+Mime-Version: 1.0
+Date: Fri, 19 Jun 2015 05:36:17 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 3386
+X-Squid-Error: ERR_CACHE_ACCESS_DENIED 0
+Vary: Accept-Language
+Content-Language: en
+Proxy-Authenticate: Negotiate
+Proxy-Authenticate: Basic realm="ECS Web cache"
+X-Cache: MISS from www-cache.ecs.vuw.ac.nz
+Via: 1.1 www-cache.ecs.vuw.ac.nz (squid/3.5.2)
+Connection: keep-alive
+
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 404 Not Found
+Server: Cowboy
+Connection: keep-alive
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+Content-Type: text/html; charset=utf-8
+Content-Length: 21
+Date: Fri, 19 Jun 2015 05:36:21 GMT
+Via: 1.1 vegur
+
+Cannot GET /update/2
