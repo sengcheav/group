@@ -32,9 +32,28 @@ app.get('/' , function(req, res){
      res.sendfile('index.html');
 
 });
+/*
+app.post('/update/:lv' , function (req, res){
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point')){
+console.log( "please specify what lvl need to update') ;
+res.statusCode = 400;
+return res.send('Error 400: Post syntax incorrect.');
+
+}  
+var obj  = {
+username : req.body.username,
+point : req.body.point
+};
+// assuming the username is correct that why it can do the updating
+
+var lvl = 
 
 
 
+
+
+};
+*/
 
 app.post ('/createAdmin' , function(req,res){
 /*var usr = [
