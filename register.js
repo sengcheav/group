@@ -75,7 +75,7 @@ query.on("row", function(result){
 
        });
     }//if--
-    else { console.log ("do not to update ") ; res.send ('Do not need to update") ;}
+    else { console.log ("do not to update ") ; res.send ('Do not need to update') ;}
 
 
  }//else--
