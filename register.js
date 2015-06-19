@@ -34,10 +34,33 @@ app.get('/' , function(req, res){
 });
 
 app.get('/pointsatlevel/:lvl', function (req, res){
-query  = client.query('SELECT POINTS_LVL [$1 ] FROM RANK WHERE username = $2' ,[req.params.lvl , 'seng1']  ) 
-query.on('row', function (result){
-if (result) res.send(result) ; 
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.lvl > 0 || !req.params.lvl<10 ){
+console.log( "please specify what lvl need to update") ;
+res.statusCode = 400;
+return res.send('Error 400: BAD REQUEST , Post syntax incorrect.');
+}
 
+var obj  = {
+username : req.body.username,
+point : req.body.point,
+};
+ 
+query  = client.query('SELECT POINTS_LVL [$1 ] AS points FROM RANK WHERE username = $2' ,[req.params.lvl , obj.username]  ) 
+query.on('row', function (result){
+if (!result) { console.log ( "NOT FOUND ") ; res.send("404: NOT FOUND") ;}
+else {
+console.log("Point at lvl" + res.params.lvl + " : "+ result.points) ; 
+res.send(result.point) ;	
+} 
+
+});
+
+query.on('err', function(err){
+if(err) {
+res.statusCode = 503;
+res.send( '503 : Error') ;
+
+}
 });
 
 });
