@@ -60,7 +60,7 @@ res.send(result.point) ;
 
 
 
-}  ) ;
+
 /*query.on('row', function (result){console.log('here'); 
 if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
 else {
