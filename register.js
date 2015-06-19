@@ -146,7 +146,6 @@ if(req.headers.accessToken != 'welcome to the nothing site'){res.statusCode =401
 else { res.statusCode =200 ; res.send('What the secret') ; }
 });
 
-â‰
 
 
 // use PORT set as an environment variable
