@@ -34,7 +34,7 @@ app.get('/' , function(req, res){
 });
 
 app.get('/pointsatlevel/:lvl', function (req, res){
-query=  = client.query('SELECT POINTS_LVL [$1 ] FROM RANK WHERE username = $2' ,[req.params.lvl , 'seng1']  ) 
+query  = client.query('SELECT POINTS_LVL [$1 ] FROM RANK WHERE username = $2' ,[req.params.lvl , 'seng1']  ) 
 query.on('row', function (result){
 if (result) res.send(result) ; 
 
