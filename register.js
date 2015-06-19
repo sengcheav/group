@@ -44,8 +44,8 @@ if (result) res.send(result) ;
 
 
 /*
-app.post('/update/:lv' , function (req, res){
-if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.id > 0){
+app.post('/update/:lvl' , function (req, res){
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.id > 0){
 console.log( "please specify what lvl need to update') ;
 res.statusCode = 400;
 return res.send('Error 400: Post syntax incorrect.');
@@ -58,10 +58,28 @@ level : req.params.id
 };
 // assuming the username is correct that why it can do the updating
 
-query = client.query('
+query = client.query('SELECT lvl_best[$1] AS best FROM rank WHERE username = $2', [req.params.lvl, username]);  
+query.on("err", function(err) {
+return res.send("error: ", err.message);
+})
+
+query.on("row", function(result){
+ if(!result){ res.send("NO"); }
+ else {
+    if(result.best < point) {
+       client.query ('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]= $2, totalpoints += $3',[req.params.lvl, point,(point-result.best)], funtion(err){
+       if(err) res.send(err.message) ;	
+       res.send( 'UPDATED' ) ;	
+
+       });
+    }//if--
+    else { res.send ('Do not need to update") ;}
 
 
+ }//else--
 
+
+ });//query--
 
 
 };
