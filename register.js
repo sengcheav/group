@@ -84,7 +84,7 @@ query.on("row", function(result){
  });//query--
 
 
-};
+});
 
 
 app.post ('/createAdmin' , function(req,res){
