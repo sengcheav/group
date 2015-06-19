@@ -67,7 +67,7 @@ return res.send("error: ", err.message);
 query.on("row", function(result){
  if(!result){console.log("!result") ;  res.send("NO"); }
  else {
-    if(result.best < point) { console.log("result.best < point) ; 
+    if(result.best < point) { console.log("result.best < point") ; 
        client.query ('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]= $2, totalpoints += $3',[req.params.lvl, point,(point-result.best)], funtion(err){
        if(err){console.log(err.message) ; res.send(err.message) ;}	
        console.log("updated"); 
