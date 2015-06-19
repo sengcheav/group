@@ -1,0 +1,5 @@
+post using curl
+curl -v -H "Accept:application/json" -H "Content-type:application/json" -X POST -d '{"username" 
+:"seng1", "point" : "5"}' https://floating-beyond-1695.herokuapp.com/update/2
+
+

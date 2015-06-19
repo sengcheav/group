@@ -34,7 +34,7 @@ app.get('/' , function(req, res){
 });
 
 app.get('/pointsatlevel/:lvl', function (req, res){
-if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.lvl > 0 || !req.params.lvl<10 ){
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.lvl < 0 || req.params.lvl>10 ){
 console.log( "please specify what lvl need to update") ;
 res.statusCode = 400;
 return res.send('Error 400: BAD REQUEST , Post syntax incorrect.');
