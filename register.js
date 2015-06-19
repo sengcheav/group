@@ -45,8 +45,8 @@ username : req.body.username,
 point : req.body.point,
 };
  
-query  = client.query('SELECT POINTS_LVL [$1 ] AS points FROM RANK WHERE username = $2' ,[req.params.lvl , obj.username]  ) 
-query.on('row', function (result){
+query  = client.query('SELECT POINTS_LVL [$1 ] AS points FROM RANK WHERE username = $2' ,[req.params.lvl , obj.username]  ) ;
+query.on('row', function (result){console.log('here'); 
 if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
 else {
 console.log("Suceess : Point at lvl" + req.params.lvl + " : "+ result.points) ; 
