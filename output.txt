@@ -1,7 +1,7 @@
 HTTP/1.1 407 Proxy Authentication Required
 Server: squid/3.5.2
 Mime-Version: 1.0
-Date: Fri, 19 Jun 2015 05:47:33 GMT
+Date: Fri, 19 Jun 2015 05:50:01 GMT
 Content-Type: text/html;charset=utf-8
 Content-Length: 3386
 X-Squid-Error: ERR_CACHE_ACCESS_DENIED 0
@@ -15,15 +15,27 @@ Connection: keep-alive
 
 HTTP/1.1 200 Connection established
 
-HTTP/1.1 404 Not Found
-Server: Cowboy
+HTTP/1.1 503 Service Unavailable
 Connection: keep-alive
-X-Powered-By: Express
-Access-Control-Allow-Origin: *
-X-Content-Type-Options: nosniff
+Server: Cowboy
+Date: Fri, 19 Jun 2015 05:50:06 GMT
+Content-Length: 484
 Content-Type: text/html; charset=utf-8
-Content-Length: 21
-Date: Fri, 19 Jun 2015 05:47:37 GMT
-Via: 1.1 vegur
+Cache-Control: no-cache, no-store
 
-Cannot GET /update/2
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style type="text/css">
+        html, body, iframe { margin: 0; padding: 0; height: 100%; }
+        iframe { display: block; width: 100%; border: none; }
+      </style>
+    <title>Application Error</title>
+    </head>
+    <body>
+      <iframe src="//s3.amazonaws.com/heroku_pages/error.html">
+        <p>Application Error</p>
+      </iframe>
+    </body>
+    </html>
