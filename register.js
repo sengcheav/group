@@ -68,7 +68,7 @@ query.on("row", function(result){
  if(!result){console.log("!result") ;  res.send("NO"); }
  else {
     if(result.best < obj.point) { console.log("result.best < point") ; 
-       client.query ('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]= $2, totalpoints += $3 WHERE username =$4',[req.params.lvl, obj.point,(obj.point-result.best),obj.username ], 
+       client.query ('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]= $2, totalpoints = totalpoints + $3 WHERE username =$4',[req.params.lvl, obj.point,(obj.point-result.best),obj.username ], 
 function(err){
        if(err){console.log(err.message) ; res.send(err.message) ;}	
        console.log("updated"); 
