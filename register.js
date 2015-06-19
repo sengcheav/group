@@ -45,7 +45,7 @@ if (result) res.send(result) ;
 
 
 app.post('/update/:lvl' , function (req, res){
-if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.id > 0){
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.lvl > 0){
 console.log( "please specify what lvl need to update") ;
 res.statusCode = 400;
 return res.send('Error 400: Post syntax incorrect.');
