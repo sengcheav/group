@@ -81,7 +81,7 @@ res.send( '503 : Error') ;
 
 }
 
-query.on('end', function (row, result){console.log("f this"):  res.send('404') ;});
+query.on('end', function (row, result){console.log("f this");  res.send('404') ;});
 
 
 });
