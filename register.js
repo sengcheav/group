@@ -35,10 +35,10 @@ app.get('/' , function(req, res){
 
 app.get('/pointsatlevel/:lvl', function (req, res){
 query.on ('SELECT POINTS_LVL ['+ req.params.lvl +'] FROM RANK WHERE username = $1' ,['seng1']  ) 
-query.on('row', result){
+query.on('row', function (result){
 if (result) res.send(result) ; 
 
-}
+});
 
 });
 
