@@ -49,7 +49,7 @@ query  = client.query('SELECT POINTS_LVL [$1 ] AS points FROM RANK WHERE usernam
 if(err) {console.log(err.message) ; res.send("errror");}
 if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
 else {
-console.log("Suceess : Point at lvl" + req.params.lvl + " : "+ result.points) ;
+console.log("Suceess : Point at lvl" + req.params.lvl + " : "+ result) ;
 res.statusCode = 200 ;  
 res.send(result.point) ;
 }  
