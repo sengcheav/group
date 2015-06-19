@@ -45,7 +45,7 @@ username : req.body.username,
 point : req.body.point,
 };
  
-query = client.query('SELECT POINTS_LVL [$1] AS points, count(username) AS count FROM RANK WHERE username = $2' ,[req.params.lvl, obj.username]);
+query = client.query('SELECT POINTS_LVL [$1] AS points, count(username) AS count FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
 //if(err) {console.log(err.message) ; res.send("errror");}
 //});
 /*
