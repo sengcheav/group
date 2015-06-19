@@ -32,9 +32,20 @@ app.get('/' , function(req, res){
      res.sendfile('index.html');
 
 });
+
+app.get('/pointsatlevel/:lvl', function (req, res){
+query.on ('SELECT POINTS_LVL ['+ req.params.lvl +'] FROM RANK WHERE username = $1' ,['seng1']  ) 
+query.on('row', result){
+if (result) res.send(result) ; 
+
+}
+
+});
+
+
 /*
 app.post('/update/:lv' , function (req, res){
-if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point')){
+if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.id > 0){
 console.log( "please specify what lvl need to update') ;
 res.statusCode = 400;
 return res.send('Error 400: Post syntax incorrect.');
@@ -42,11 +53,12 @@ return res.send('Error 400: Post syntax incorrect.');
 }  
 var obj  = {
 username : req.body.username,
-point : req.body.point
+point : req.body.point, 
+level : req.params.id
 };
 // assuming the username is correct that why it can do the updating
 
-var lvl = 
+query = client.query('
 
 
 
