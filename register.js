@@ -45,7 +45,7 @@ username : req.body.username,
 point : req.body.point,
 };
  
-query = client.query('SELECT POINTS_LVL [$1] AS points, count(username) AS count FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
+query = client.query('SELECT POINTS_LVL [$1] AS points, count(username) FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
 //if(err) {console.log(err.message) ; res.send("errror");}
 //});
 /*
@@ -63,7 +63,7 @@ res.send(result.point) ;
 
 query.on('row', function (result){console.log('here'); 
 if( result.count == 0) {console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
-if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
+//if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
 else {
 console.log("Suceess : Point at lvl" + req.params.lvl + " : "+ result.points) ; 
 res.statusCode = 200 ;
