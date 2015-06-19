@@ -1,7 +1,7 @@
 HTTP/1.1 407 Proxy Authentication Required
 Server: squid/3.5.2
 Mime-Version: 1.0
-Date: Fri, 19 Jun 2015 05:36:17 GMT
+Date: Fri, 19 Jun 2015 05:47:33 GMT
 Content-Type: text/html;charset=utf-8
 Content-Length: 3386
 X-Squid-Error: ERR_CACHE_ACCESS_DENIED 0
@@ -23,7 +23,7 @@ Access-Control-Allow-Origin: *
 X-Content-Type-Options: nosniff
 Content-Type: text/html; charset=utf-8
 Content-Length: 21
-Date: Fri, 19 Jun 2015 05:36:21 GMT
+Date: Fri, 19 Jun 2015 05:47:37 GMT
 Via: 1.1 vegur
 
 Cannot GET /update/2
