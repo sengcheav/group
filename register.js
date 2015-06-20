@@ -55,16 +55,17 @@ p  = result.points ;
 //res.statusCode =200 ;
 //res.return(result);
 });
+/*
 query.on('err', function(err){
 res.statusCode = 503 ;
 res.return("503 : ERROR") ; 
 });
-
+*/
 query.on('end', function(row, result){
 
 if(0 == 0){
 console.log("point = "+p) ;
-res.writeHead(200) ;
+res.statusCode =200 ;
 res.send(p) ; 
 res.end() ; 
 } 
