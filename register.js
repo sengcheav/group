@@ -58,7 +58,7 @@ p  = result.points ;
 if(result.count != 0 ) {
 console.log("suceess"+ result.points) ;
 return res.send(result.count) ;
-}else if( returnPoint  == -1){
+}else {
 console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
 }
  
@@ -66,6 +66,7 @@ console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
 });
 
 query.on('end', function(){
+if(returnPoint == -1 ) {console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");}
 res.end() ; 
 });
 
