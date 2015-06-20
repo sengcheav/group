@@ -50,7 +50,7 @@ username : req.body.username,
  
 
 query = client.query('SELECT POINTS_LVL [$1] AS points, COUNT(username)  FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
-var returnPoint = 0  ; var  p = -1 ; 
+var returnPoint = -1  ; var  p = -1 ; 
 query.on('row', function (result){
 if (result) {
 returnPoint = result.count ;
@@ -58,7 +58,7 @@ p  = result.points ;
 if(result.count != 0 ) {
 console.log("suceess"+ result.points) ;
 return res.send(result.count) ;
-}else {
+}else if( returnPoint  == -1){
 console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
 }
  
