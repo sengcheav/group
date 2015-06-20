@@ -57,7 +57,7 @@ if (result) {
 returnPoint = result.count ;
 p  = result.points ;
 if (returnPoint == 0 ) {res.statusCode =404 ;console.log ("NO"); res.send('no'); }
-}else { res.send(result.count) ; } 
+}else {console.log("suceess") ; res.send(result.count) ; } 
 });
 
 query.on('end', function(){
