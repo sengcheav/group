@@ -43,7 +43,7 @@ return res.send('Error 400: BAD REQUEST , Post syntax incorrect.');
 
 var obj  = {
 username : req.body.username,
-point : req.body.point,
+point : req.body.point
 };
  
 
@@ -52,21 +52,14 @@ var returnPoint = 0  ; var  p = -1 ;
 query.on('row', function (result){
 returnPoint = result.count ;
 p  = result.points ; 
-//res.statusCode =200 ;
-//res.return(result);
 });
-/*
-query.on('err', function(err){
-res.statusCode = 503 ;
-res.return("503 : ERROR") ; 
-});
-*/
+
 query.on('end', function(){
 
 if(0 == 0){
 console.log("point = "+p) ;
 res.statusCode =200 ;
-res.return(p) ; 
+return res.send(p) ; 
 res.end() ; 
 } 
 else if(returnPoint == 0 ){ 
