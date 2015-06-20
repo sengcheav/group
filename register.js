@@ -61,9 +61,9 @@ res.statusCode =404 ;console.log ("NO"); return res.send('404:NOT FOUND'); }
 console.log("suceess") ; return res.send(result.count) ; } 
 });
 
-//query.on('end', function(){
-//res.end() ; 
-//});
+query.on('end', function(){
+res.end() ; 
+});
 
 });
 
