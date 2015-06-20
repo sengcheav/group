@@ -66,7 +66,10 @@ console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
 });
 
 query.on('end', function(){
-if(returnPoint == -1 ) {console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");}
+if(returnPoint == -1 ) {
+console.log("404 : NOT FOUND");
+res.statusCode = 404 ;
+return res.send("404: NOT FOUND");}
 res.end() ; 
 });
 
