@@ -33,7 +33,7 @@ app.get('/' , function(req, res){
 
 });
 
-app.get('/pointsatlevel/:lvl', function (req, res){
+app.get('/pointsAtlevel/:lvl', function (req, res){
 
 if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.lvl < 0 || req.params.lvl>10 ){
 console.log( "please specify what lvl need to update") ;
@@ -60,7 +60,7 @@ if(0 == 0){
 console.log("point = "+p) ;
 res.statusCode =200 ;
 return res.sendStatus(p) ; 
-res.end() ; 
+//res.end() ; 
 } 
 else if(returnPoint == 0 ){ 
 console.log("Need to sign up"); 
