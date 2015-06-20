@@ -48,7 +48,7 @@ point : req.body.point,
  
 
 query = client.query('SELECT POINTS_LVL [$1] AS points, COUNT(username)  FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
-var returnPoint = 0  ; var = p ; 
+var returnPoint = 0  ; var  p = -1 ; 
 query.on('row', function (result){
 returnPoint = result.count ;
 p  = result.points ; 
