@@ -55,11 +55,12 @@ query.on('row', function (result){
 if (result) {
 returnPoint = result.count ;
 p  = result.points ;
-if (returnPoint == 0 ) {
-res.statusCode =404 ;console.log ("NO"); return res.send('404:NOT FOUND'); }
-}else {
+//if (returnPoint == 0 ) {
+//res.statusCode =404 ;console.log ("NO");
+//return res.send('404:NOT FOUND'); }
+//}else {
 console.log("suceess") ; return res.send(result.count) ; } 
-});
+//});
 
 query.on('end', function(){
 res.end() ; 
