@@ -20,7 +20,10 @@ client = new pg.Client(connectionString);
 client.connect();
 
 // make sure we can parse JSON
-app.use(bodyParser.urlencoded());
+//app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
@@ -54,12 +57,12 @@ returnPoint = result.count ;
 p  = result.points ; 
 });
 
-query.on('end', function(){
+query.on('end', function(result){
 
 if(0 == 0){
 console.log("point = "+p) ;
 res.statusCode =200 ;
-return res.sendStatus(p) ; 
+return res.sendStatus(result.points) ; 
 //res.end() ; 
 } 
 else if(returnPoint == 0 ){ 
