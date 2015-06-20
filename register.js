@@ -35,7 +35,45 @@ app.get('/' , function(req, res){
      res.sendfile('index.html');
 
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+app.get('/rank', function (req,res){
+query = client.query('SELECT username , totalpoints, points_lvl FROM rank') ;
+ var alluser =[];
+query.on('row', function (result){
+var user ; 
+user.username = result.username;
+user.totalpoints = result.totalpoints;
+user.points_lvl = result.points_lvl ; 
+alluser.push(user) ; 
+});
+
+query.on('err', function(err){
+res.statusCode =  503 ; 
+console.log("503 : ERROR");
+return res.send( "503 : ERROR"); 
+})
+
+query.on('end', function(){
+if(alluser.length < 1 ){
+res.statusCode =404 ; 
+console.log ("404 : NOT FOUND");
+res.return ("404 : NOT FOUND");
+res.end() ; 
+}else {
+res.statusCode = 200 ; 
+console.log("SUCCESS RETRIEVING FROM DATABASE");
+return res.send(alluser) ; 
+
+}
+
+});
+
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/pointsAtlevel/:lvl', function (req, res){
 
 if(!req.body.hasOwnProperty('username') || req.params.lvl < 0 || req.params.lvl>10 ){
@@ -48,7 +86,6 @@ var obj  = {
 username : req.body.username,
 };
  
-
 query = client.query('SELECT POINTS_LVL [$1] AS points, COUNT(username)  FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
 var returnPoint = -1  ; var  p = -1 ; 
 query.on('row', function (result){
@@ -80,7 +117,7 @@ res.end() ;
 });
 
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 app.post('/update/:lvl' , function (req, res){
 if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.lvl > 0){
 console.log( "please specify what lvl need to update") ;
@@ -123,8 +160,9 @@ function(err){
 
 
 });
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 app.post ('/createAdmin' , function(req,res){
 /*var usr = [
         {username : 'seng', password : 'invalid'},
