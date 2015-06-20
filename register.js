@@ -59,17 +59,23 @@ if(result.count != 0 ) {
 console.log("suceess"+ result.points) ;
 return res.send(result.count) ;
 }else {
-console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
+console.log("404 : NOT FOUND"); return res.send("404: CAN NOT FIND USER WITH GIVEN USER NAME");
 }
  
 } 
 });
 
+query.on('error', funtion(err){
+res.statusCode = 503 ; 
+console.log(err.message) ; 
+return res.send("503 : ERROR") ; 
+}};
+
 query.on('end', function(){
 if(returnPoint == -1 ) {
 console.log("404 : NOT FOUND");
 res.statusCode = 404 ;
-return res.send("404: NOT FOUND");}
+return res.send("404: NOT CANT FIND USERNAME");}
 res.end() ; 
 });
 
