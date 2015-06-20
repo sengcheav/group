@@ -55,22 +55,9 @@ var returnPoint = 0  ; var  p = -1 ;
 query.on('row', function (result){
 returnPoint = result.count ;
 p  = result.points ; 
+if( returnPoint !=0 ) return res.send(p) ; 
 });
 
-query.on('end', function(result){
-
-if(0 == 0){
-console.log("point = "+p) ;
-res.statusCode =200 ;
-return res.sendStatus(result.points) ; 
-//res.end() ; 
-} 
-else if(returnPoint == 0 ){ 
-console.log("Need to sign up"); 
-res.end() ; 
-}
-
-});
 
 
 });
