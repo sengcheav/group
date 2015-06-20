@@ -40,7 +40,7 @@ app.get('/' , function(req, res){
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get('/rank', function (req,res){
-query = client.query('SELECT username , totalpoints, points_lvl FROM rank DESC') ;
+query = client.query('SELECT username , totalpoints, points_lvl FROM rank ORDER BY totalpoints DESC') ;
 var alluser =[];
 query.on('row', function (result){
 var user ={
@@ -56,7 +56,7 @@ alluser.push(user) ;
 
 query.on('err', function(err){
 res.statusCode =  503 ; 
-console.log("503 : ERROR");
+console.log("503 : ERROR "+ err.message );
 return res.send( "503 : ERROR"); 
 })
 
