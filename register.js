@@ -61,12 +61,12 @@ res.statusCode = 503 ;
 res.return("503 : ERROR") ; 
 });
 */
-query.on('end', function(row, result){
+query.on('end', function(){
 
 if(0 == 0){
 console.log("point = "+p) ;
 res.statusCode =200 ;
-res.send(p) ; 
+res.return(p) ; 
 res.end() ; 
 } 
 else if(returnPoint == 0 ){ 
