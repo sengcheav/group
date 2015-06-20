@@ -40,8 +40,8 @@ app.get('/' , function(req, res){
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get('/rank', function (req,res){
-query = client.query('SELECT username , totalpoints, points_lvl FROM rank') ;
- var alluser =[];
+query = client.query('SELECT username , totalpoints, points_lvl FROM rank DESC') ;
+var alluser =[];
 query.on('row', function (result){
 var user ={
 username : "",
