@@ -59,7 +59,7 @@ query.on('end', function(){
 if(0 == 0){
 console.log("point = "+p) ;
 res.statusCode =200 ;
-return res.send(p) ; 
+return res.sendStatus(p) ; 
 res.end() ; 
 } 
 else if(returnPoint == 0 ){ 
