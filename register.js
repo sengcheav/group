@@ -58,6 +58,8 @@ p  = result.points ;
 if(result.count != 0 ) {
 console.log("suceess"+ result.points) ;
 return res.send(result.count) ;
+}else {
+console.log("404 : NOT FOUND"); return res.send("404: NOT FOUND");
 }
  
 } 
