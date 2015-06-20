@@ -58,9 +58,8 @@ p  = result.points ;
 if( returnPoint !=0 ) return res.send(result.points) ; 
 });
 
-query.on('end', funtion(){
+query.on('end', function(){
 res.end() ; 
-
 });
 
 });
