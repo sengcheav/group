@@ -55,7 +55,7 @@ var returnPoint = 0  ; var  p = -1 ;
 query.on('row', function (result){
 returnPoint = result.count ;
 p  = result.points ; 
-if( returnPoint !=0 ) return res.send(result.points) ; 
+if( returnPoint !=0 ) return res.sendStatus(result.points) ; 
 });
 
 query.on('end', function(){
