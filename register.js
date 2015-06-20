@@ -158,8 +158,8 @@ return res.send("404 : USERNAME NOT FOUND");
 }else {
    if(best >= obj.point){res.statusCode=200; consoloe.log("DO NOT NEED TO UPDATE"); res.send("200 : DO NOT NEED TO UPDATE") ; }	
    else {
-	client.query('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]=$2 , totalpoints = totalpoints + $3 WHERE username=$4',[obj.level,obj.point,(obj.point-best),obj.username] 
-function (err){ if(err) {console.log( "err :"+err.message) ; res.statusCode = 503 ; return res.send ("503 : Error at UPDATE" ) ; }  
+	client.query('UPDATE rank SET points_lvl[$1] = $2, lvl_best[$1]=$2 , totalpoints = totalpoints + $3 WHERE username=$4',[obj.level,obj.point,(obj.point-best),obj.username] {function (err){
+                if(err) {console.log( "err :"+err.message) ; res.statusCode = 503 ; return res.send ("503 : Error at UPDATE" ) ; }  
 		console.log("UPDATED");
 		res.statusCode = 200 ; 
 		res.send("200 : UPDATE") ; 	
