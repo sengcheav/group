@@ -169,7 +169,7 @@ return res.send("404 : USERNAME NOT FOUND");
 
 	}
 }
-
+res.end() ;
 });
 
 /*query = client.query('SELECT lvl_best[$1] AS best FROM rank WHERE username = $2', [req.params.lvl, obj.username]);  
