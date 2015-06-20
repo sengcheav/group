@@ -59,7 +59,7 @@ p  = result.points ;
 //res.statusCode =404 ;console.log ("NO");
 //return res.send('404:NOT FOUND'); }
 //}else {
-console.log("suceess"+ result.count) ; return res.send(result.count) ; 
+console.log("suceess"+ result.points) ; return res.send(result.count) ; 
 } 
 });
 
