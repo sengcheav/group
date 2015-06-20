@@ -65,7 +65,7 @@ console.log("404 : NOT FOUND"); return res.send("404: CAN NOT FIND USER WITH GIV
 } 
 });
 
-query.on('error', funtion(err){
+query.on('error', function(err){
 res.statusCode = 503 ; 
 console.log(err.message) ; 
 return res.send("503 : ERROR") ; 
