@@ -34,6 +34,7 @@ app.get('/' , function(req, res){
 });
 
 app.get('/pointsatlevel/:lvl', function (req, res){
+
 if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.lvl < 0 || req.params.lvl>10 ){
 console.log( "please specify what lvl need to update") ;
 res.statusCode = 400;
@@ -45,38 +46,41 @@ username : req.body.username,
 point : req.body.point,
 };
  
-query = client.query('SELECT COUNT(*) FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
-query.on('row', function (result1){
-if(result1.count == 0 ){ res.statusCode = 404 ; console.log("not found- 0  ") ; res.send("NOT FOUND"); }
-else {
+/*
 query = client.query('SELECT POINTS_LVL [$1] AS points FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
 query.on('row', function (result){console.log('here'); 
 if( result.count == 0) {console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
-//if (!result) { console.log ( "NOT FOUND ") ; res.statusCode = 404 ; res.send("404: NOT FOUND") ;}
 if(result) {
 console.log("Suceess : Point at lvl" + req.params.lvl + " : "+ result.points) ; 
 res.statusCode = 200 ;
 res.send(result.point) ;	
-} 
-
-});
-
 query.on('err', function(err){
 if(err) {
 res.statusCode = 503;
 res.send( '503 : Error') ;
-
-}
-
-
-});
-
 }
 });
+}
+});*/
 
+query = client.query('SELECT POINTS_LVL [$1] AS points FROM RANK WHERE username = $2 GROUP BY POINTS_LVL[$1]',[req.params.lvl, obj.username]);
+var returnPoint = -1  ; 
+query.on('row', function (result){
+returnPoint = result ;
+res.statusCode =200 ;
+res.return(result);
+});
+query.on('err', function(err){
+res.statusCode = 503 ;
+res.return("503 : ERROR") ; 
+});
+query.on('end', function(row, result){
+return res.send(returnPoint ); 
+});
 
 
 });
+
 app.post('/update/:lvl' , function (req, res){
 if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || !req.params.lvl > 0){
 console.log( "please specify what lvl need to update") ;
