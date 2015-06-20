@@ -69,7 +69,7 @@ query.on('error', function(err){
 res.statusCode = 503 ; 
 console.log(err.message) ; 
 return res.send("503 : ERROR") ; 
-}};
+});
 
 query.on('end', function(){
 if(returnPoint == -1 ) {
