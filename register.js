@@ -38,15 +38,14 @@ app.get('/' , function(req, res){
 
 app.get('/pointsAtlevel/:lvl', function (req, res){
 
-if(!req.body.hasOwnProperty('username') || !req.body.hasOwnProperty('point') || req.params.lvl < 0 || req.params.lvl>10 ){
-console.log( "please specify what lvl need to update") ;
+if(!req.body.hasOwnProperty('username') || req.params.lvl < 0 || req.params.lvl>10 ){
+console.log( "please specify what lvl need") ;
 res.statusCode = 400;
 return res.send('Error 400: BAD REQUEST , Post syntax incorrect.');
 }
 
 var obj  = {
 username : req.body.username,
-point : req.body.point
 };
  
 
@@ -56,13 +55,15 @@ query.on('row', function (result){
 if (result) {
 returnPoint = result.count ;
 p  = result.points ;
-if (returnPoint == 0 ) {res.statusCode =404 ;console.log ("NO"); res.send('no'); }
-}else {console.log("suceess") ; res.send(result.count) ; } 
+if (returnPoint == 0 ) {
+res.statusCode =404 ;console.log ("NO"); res.send('404:NOT FOUND'); }
+}else {
+console.log("suceess") ; res.send(result.count) ; } 
 });
 
-query.on('end', function(){
-res.end() ; 
-});
+//query.on('end', function(){
+//res.end() ; 
+//});
 
 });
 
