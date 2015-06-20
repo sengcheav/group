@@ -43,7 +43,11 @@ app.get('/rank', function (req,res){
 query = client.query('SELECT username , totalpoints, points_lvl FROM rank') ;
  var alluser =[];
 query.on('row', function (result){
-var user ; 
+var user ={
+username : "",
+totalpoints: 0 
+
+} ; 
 user.username = result.username;
 user.totalpoints = result.totalpoints;
 user.points_lvl = result.points_lvl ; 
