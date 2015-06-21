@@ -82,7 +82,7 @@ app.get('/user/:username', function (req,res){
 if(!req.body.hasOwnProperty('username') ){
 console.log("NEED USERNAME");
 res.statusCode = 400 ;
-returrn res.send('Error 400 : USERNAME not specified'); 
+return res.send('Error 400 : USERNAME not specified'); 
 }
 var count =-1 ;
 var user ={
