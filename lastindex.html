@@ -1,0 +1,62 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=320 user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>yo</title>
+   
+
+    <!-- Jquery and Jquery mobile -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
+    </script>
+
+    <style>
+    </style>
+</head>
+ <body>
+ 	  <div role="main" class="ui-content">
+		<form action="/login" id= "formid" method="post">
+		    <div>
+		        <label>Username:</label>
+		        <input type="text" name="username" id="name" placeholder="Username"/>
+		    </div>
+		    <div>
+		        <label>Password:</label>
+		        <input type="password" name="password" id= "password" placeholder="Password"/>
+		    </div>
+		    <div>
+		        <input type="submit" value="Log In" id ="in"/>
+		    </div>
+
+		</form> 
+		<form action="/logout" id= "formidd" method="get">
+		 <div>
+		        <input type="submit" value="Log out" id ="button2"/>
+		    </div>
+		 </form> 
+<script>
+$(document).ready(function() {
+	$.ajaxSetup ({ cache: false
+	});
+	$("#in").bind("click", function (event, ui){
+		var url ="https://floating-beyond-1695.herokuapp.com/login";
+	        var user ;
+		user.username = $("#name").val();
+		user.password =$("#password").val();
+		$.post(url, user, 'json');
+		
+	});
+	$("#button2").bind("click", function (event, ui){
+		//var url ="http://stark-sea-8865.herokuapp.com/3";
+		//var username = $("#name").val();
+		//var password =$("#password").val();
+		//$.post(url, username, passworld, function()'json');
+		 $("formidd").submit();
+	});
+ } )
+</script>		 
+
+	 </body>	 </html>
+

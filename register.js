@@ -32,7 +32,7 @@ app.use(express.static(__dirname));
 app.use(cors());
 
 app.get('/' , function(req, res){
-     res.sendfile('index2.html');
+     res.sendfile('index.html');
 
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////

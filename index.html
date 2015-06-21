@@ -1,62 +1,72 @@
- <!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=320 user-scalable=no" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>yo</title>
-   
-
-    <!-- Jquery and Jquery mobile -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
-    </script>
-
-    <style>
-    </style>
+<title>Title of the document</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" /> 
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
- <body>
- 	  <div role="main" class="ui-content">
-		<form action="/login" id= "formid" method="post">
-		    <div>
-		        <label>Username:</label>
-		        <input type="text" name="username" id="name" placeholder="Username"/>
-		    </div>
-		    <div>
-		        <label>Password:</label>
-		        <input type="password" name="password" id= "password" placeholder="Password"/>
-		    </div>
-		    <div>
-		        <input type="submit" value="Log In" id ="in"/>
-		    </div>
 
-		</form> 
-		<form action="/logout" id= "formidd" method="get">
-		 <div>
-		        <input type="submit" value="Log out" id ="button2"/>
-		    </div>
-		 </form> 
-<script>
-$(document).ready(function() {
-	$.ajaxSetup ({ cache: false
-	});
-	$("#in").bind("click", function (event, ui){
-		var url ="https://floating-beyond-1695.herokuapp.com/login";
-	        var user ;
-		user.username = $("#name").val();
-		user.password =$("#password").val();
-		$.post(url, user, 'json');
-		
-	});
-	$("#button2").bind("click", function (event, ui){
-		//var url ="http://stark-sea-8865.herokuapp.com/3";
-		//var username = $("#name").val();
-		//var password =$("#password").val();
-		//$.post(url, username, passworld, function()'json');
-		 $("formidd").submit();
-	});
- } )
-</script>		 
+<body>
+<!--
+<img id="loginbackground"src="images/setting.png">
+-->
+<section class="container">
+    <div class="login">
+          <h1 id="title">Login</h1>
+      <p><input type="text" name="username" value="" placeholder="Username" id = "username"></p>
+      <p><input type="password" name="password" value="" placeholder="Password" id = "password"></p>
+      <p id= "submit" class="submit"><input type="submit" value="login" id="login" /></p>
 
-	 </body>	 </html>
+    </div>
+<!--
+    <div class = "signup">
+    	<input type="submit" value="signup" id="signup" />
+    </div>
+-->
+  </section>
+
+    <script type="text/javascript">
+	    $(document).bind('pageinit', function() {
+
+			var token;
+
+			$.ajaxSetup ({
+				cache: false
+			});
+/*
+	       $( "#signup" ).bind( "click", function(event, ui) {
+				window.location.replace("html/signup.html");
+			});
+*/
+			$( "#login" ).bind( "click", function(event, ui) {
+				var un = $("#username").val();
+				var pw = $("#password").val();
+				$.ajax({
+					type: "POST",
+					url : "https://floating-beyond-1695.herokuapp.com/login",
+					data: {username: un, password: pw},
+					//CHECK HERE WITH FALSE CREDENTIALS ETC
+					success : function(data){
+						if(data == 'unauthorized login!'){    
+						  alert(data);
+						}
+						else{
+						  alert('Logon succesful');
+						  sessionStorage.setItem('token', data);
+						  //window.location.replace("html/title.html");
+						}
+					},
+					error: function(data) {
+						alert('an error occured');
+					}
+				},"json");
+			});
+
+	    });
+    </script>
+  </body>
+
+
+</html>
 
