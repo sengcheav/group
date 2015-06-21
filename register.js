@@ -247,7 +247,7 @@ query.on('row', function( result){
 	  // if(results.length < 1 ) {console.log ("result is 0 ") ; res.statusCode = 404 ; res.redirect('/');}
 		passwordHash(user.password).verifyAgainst(result.hash, function(error, verified) {
 		if(error){ console.log("Error comparing hash : "+  error.message); res.statusCode = 400 ; res.redirect('/') ;}
-		if(!verified){ console.log("Invalid password"); res.statusCode = 404 ; res.write('unauthorized login!'); res.end();} //res.redirect('/') ; } 
+		if(!verified){ console.log("Invalid password");  res.write('unauthorized login!'); res.end();} //res.redirect('/') ; } 
 		else { console.log("Got verified but still need to update" );
 	            query= client.query( 'UPDATE userloginHash SET login = true WHERE username = $1 ' , [user.username], function (err) {
           		 if(err) {
