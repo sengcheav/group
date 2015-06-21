@@ -25,7 +25,7 @@
       <p><input type="text" name="username" value="" placeholder="Username" id = "username1"></p>
       <p><input type="number" name="points" value="" placeholder="Points" id = "points"></p>
       <p><input type="number" name="level" value="" placeholder="Level" id = "level"></p>
-	<p id= "submit" class="submit"><input type="submit" value="update" id="update" /></p>
+      <p id= "submit1" class="submit1"><input type="submit" value="" id="update" /></p>
 
     </div>	
 <!--
@@ -71,7 +71,7 @@
 					}
 				},"json");
 			});
-			$( "#update").bind("click", function(event,ui){
+			$( "#update").bind("click", function(event,ui){ alert('click') ; 
 				var un = $("#username1").val();
 				var points = $("points").val();
 				var level = $("level").val(); 
