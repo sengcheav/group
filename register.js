@@ -79,14 +79,14 @@ return res.send(alluser) ;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/user/:username', function (req,res){
-if(!req.body.hasOwnProperty('username') ){
+if(!req.params.username ){
 console.log("NEED USERNAME");
 res.statusCode = 400 ;
 return res.send('Error 400 : USERNAME not specified'); 
 }
 var count =-1 ;
 var user ={
-username : req.body.username,
+username : req.params.username,
 totalpoint : 0 ,
 points_lvl : [10],
 best : [10]
