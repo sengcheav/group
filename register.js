@@ -78,7 +78,52 @@ return res.send(alluser) ;
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get('/user/:username', function (req,res){
+if(!req.body.hasOwnProperty('username') ){
+console.log("NEED USERNAME");
+res.statusCode = 400 ;
+returrn res.send('Error 400 : USERNAME not specified'); 
+}
+var count =-1 ;
+var user ={
+username = req.body.username,
+totalpoint = 0 ,
+points_lvl = [10],
+best = [10]
+}
+query = client.query('SELECT COUNT(*) AS COUNT ,TOTALPOINTS, USERNAME , POINTS_LVL , LVL_BEST FROM RANK GROUP BY USERNAME WHERE USERNAME=$1', [user.username]);
+query.on('row', function(result){
+if(result){
+count = result.count;
+user.totalpoint = result.totalpoints;
+user.points_lvl =result.points_lvl;
+user.best = result.lvl_best;
+res.statusCode =200 ;
+console.log("RETRIEVE SUCCESS AT GET USER') ;
+return res.send(user) ; 
+}
+});
+query.on('err', function(err){
+if(err){
+res.statusCode =503;
+console.log("ERROR" + err.message);
+return res.send("503 : ERROR");
+}
 
+});
+query.on('end', function(){
+if(count == -1 ){
+console.log("USER NOT FOUND");
+res.statusCode =404 ;
+return res.send("404: USERNOT FOUND");
+}
+res.end() ;
+});
+
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/pointsAtlevel/:lvl', function (req, res){
 
 if(!req.body.hasOwnProperty('username') || req.params.lvl < 0 || req.params.lvl>10 ){
