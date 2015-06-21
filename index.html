@@ -46,9 +46,7 @@ $(document).ready(function() {
 		user.username = $("#name").val();
 		user.password =$("#password").val();
 		$.post(url, user, 'json');
-		//if(!"#name"){ alert("please enter your username");}
-		//else if(!"#password"){ alert("please enter your password");}
-		//else { $("formid").submit();}
+		
 	});
 	$("#button2").bind("click", function (event, ui){
 		//var url ="http://stark-sea-8865.herokuapp.com/3";

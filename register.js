@@ -32,7 +32,7 @@ app.use(express.static(__dirname));
 app.use(cors());
 
 app.get('/' , function(req, res){
-     res.sendfile('index.html');
+     res.sendfile('index2.html');
 
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,7 +247,7 @@ query.on('row', function( result){
 	  // if(results.length < 1 ) {console.log ("result is 0 ") ; res.statusCode = 404 ; res.redirect('/');}
 		passwordHash(user.password).verifyAgainst(result.hash, function(error, verified) {
 		if(error){ console.log("Error comparing hash : "+  error.message); res.statusCode = 400 ; res.redirect('/') ;}
-		if(!verified){ console.log("Invalid password"); res.statusCode = 404 ; res.redirect('/') ; } 
+		if(!verified){ console.log("Invalid password"); res.statusCode = 404 ; res.write('unauthorized login!'); res.redirect('/') ; } 
 		else { console.log("Got verified but still need to update" );
 	            query= client.query( 'UPDATE userloginHash SET login = true WHERE username = $1 ' , [user.username], function (err) {
           		 if(err) {
@@ -257,7 +257,7 @@ query.on('row', function( result){
           		 }else {
                			 console.log('login');
              		         res.statusCode =200 ; 
-				 res.setHeader('accessToken', 'welcome to the nothing site');  
+				 //res.setHeader('accessToken', 'welcome to the nothing site');  
              		         res.send("OK");
           		 } 
 
