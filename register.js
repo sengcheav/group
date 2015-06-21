@@ -86,10 +86,10 @@ return res.send('Error 400 : USERNAME not specified');
 }
 var count =-1 ;
 var user ={
-username = req.body.username,
-totalpoint = 0 ,
-points_lvl = [10],
-best = [10]
+username : req.body.username,
+totalpoint : 0 ,
+points_lvl : [10],
+best : [10]
 }
 query = client.query('SELECT COUNT(*) AS COUNT ,TOTALPOINTS, USERNAME , POINTS_LVL , LVL_BEST FROM RANK GROUP BY USERNAME WHERE USERNAME=$1', [user.username]);
 query.on('row', function(result){
