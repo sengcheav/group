@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+
+<body>
+
+<img id="loginbackground"src="images/setting.png">
+
+<section class="container">
+    <div class="update">
+          <h1 id="title">update</h1>
+      <p><input type="text" name="username" value="" placeholder="Username" id = "username"></p>
+      <p><input type="number" name="password" value="" placeholder="point" id = "point"></p>
+      <p id= "submit" class="submit"><input type="submit" value="update" id="update" /></p>
+
+    </div>
+/*
+    <div class = "signup">
+    	<input type="submit" value="signup" id="signup" />
+    </div>
+*/
+  </section>
+
+    <script type="text/javascript">
+	    $(document).bind('pageinit', function() {
+
+			var token;
+
+			$.ajaxSetup ({
+				cache: false
+			});
+
+/*	       $( "#signup" ).bind( "click", function(event, ui) {
+				window.location.replace("html/signup.html");
+			});
+*/
+			$( "#login" ).bind( "click", function(event, ui) {
+				var un = $("#username").val();
+				var p = $("#point").val();
+				var lvl = $("#level").val() ; 
+				$.ajax({
+					type: "POST",
+					url : "https://roadsafe.herokuapp.com/update",
+					data: {username: un, password: pw},
+					//CHECK HERE WITH FALSE CREDENTIALS ETC
+					success : function(data){
+						if(data == 'unauthorized login!'){    
+						  alert(data);
+						}
+						else{
+						  alert('Logon succesful');
+						  sessionStorage.setItem('token', data);
+						  window.location.replace("html/title.html");
+						}
+					},
+					error: function(data) {
+						alert('an error occured');
+					}
+				},"json");
+			});
+
+	    });
+    </script>
+  </body>
+
+
+</html>
+

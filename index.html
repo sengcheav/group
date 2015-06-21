@@ -78,7 +78,7 @@
 				//var token = sessionStorage.getItem('token') ; 
 				$.ajax({
 					type: "POST",
-					url : "https://floating-beyond-1695.herokuapp.com//update/"+ level,	
+					url : "https://floating-beyond-1695.herokuapp.com/update/"+ level,	
 					data:{username: un, point : points },
 					success : function(data){
 						if (data == '200 : UPDATE'){
