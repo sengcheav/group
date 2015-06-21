@@ -99,7 +99,7 @@ user.totalpoint = result.totalpoints;
 user.points_lvl =result.points_lvl;
 user.best = result.lvl_best;
 res.statusCode =200 ;
-console.log("RETRIEVE SUCCESS AT GET USER') ;
+console.log("RETRIEVE SUCCESS AT GET USER") ;
 return res.send(user) ; 
 }
 });
