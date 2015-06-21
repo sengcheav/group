@@ -79,7 +79,7 @@
 				var level = $("#level").val(); 
 				var token = sessionStorage.getItem('token') ; 
 				alert( "data being send: " + un + " " + points+ " "+ token) ; 
-				if(point == null || point == 'undefined' ) alert ("Undefine") ; 
+				if(points === null || points === 'undefined' ) alert ("Undefine") ; 
 				$.ajax({
 					type: "POST",
 					url : "https://floating-beyond-1695.herokuapp.com/update/"+ level,	
