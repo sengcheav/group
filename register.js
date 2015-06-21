@@ -162,14 +162,14 @@ return res.send("404 : USERNAME NOT FOUND");
                 if(err) {console.log( "err :"+err.message) ; res.statusCode = 503 ; return res.send ("503 : Error at UPDATE" ) ; }  
 		console.log("UPDATED");
 		res.statusCode = 200 ; 
-		res.send("200 : UPDATE") ; 	
+		return res.send("200 : UPDATE") ; 	
 	
 	      }); 
         
 
 	}
 }
-res.end() ;
+//res.end() ;
 });
 
 /*query = client.query('SELECT lvl_best[$1] AS best FROM rank WHERE username = $2', [req.params.lvl, obj.username]);  
