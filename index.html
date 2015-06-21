@@ -22,7 +22,7 @@
 
      <div class="update">
           <h2 id="title2">update</h2>
-      <p><input type="text" name="username1" value="" placeholder="Username" id = "username1"></p>
+     <!-- <p><input type="text" name="username1" value="" placeholder="Username" id = "username1"></p>  -->
       <p><input type="number" name="points" value="" placeholder="Points" id = "points"></p>
       <p><input type="number" name="level" value="" placeholder="Level" id = "level"></p>
       <p id= "submit" class="submit"><input type="submit" value="UPDATE" id="update" /></p>
@@ -63,7 +63,8 @@
 						else{
 						  alert('Logon succesful');
 						  sessionStorage.setItem('token', data);
-						  //window.location.replace("html/title.html");
+						  sessionStorage.setItem('username', un) ;  
+						//window.location.replace("html/title.html");
 						}
 					},
 					error: function(data) {
@@ -72,11 +73,12 @@
 				},"json");
 			});
 			$( "#update").bind("click", function(event,ui){ 
-				var un = $("#username1").val();
+				//var un = $("#username1").val();
+				var un = sessionStorage.getItem('username') ; 
 				var points = $("#points").val();
 				var level = $("#level").val(); 
 				var token = sessionStorage.getItem('token') ; 
-				alert( un + " " + points+ " "+ token) ; 
+				alert( "data being send: " + un + " " + points+ " "+ token) ; 
 				$.ajax({
 					type: "POST",
 					url : "https://floating-beyond-1695.herokuapp.com/update/"+ level,	
