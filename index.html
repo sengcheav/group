@@ -79,7 +79,7 @@
 				var level = $("#level").val(); 
 				var token = sessionStorage.getItem('token') ; 
 				//alert( "data being send: " + un + " " + points+ " "+ token) ; 
-				if( points == '' || points < 0 || level == '' || level > 9  ){ alert ("points<0 or null in point or level") ; 
+				if( points == '' || points < 0 || level == '' || level > 9  ){ alert ("points<0 or null in point or level") ;} 
 				else{ alert( "data being send: " + un + " " + points+ " "+ token) ;
 				$.ajax({
 					type: "POST",
