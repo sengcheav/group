@@ -152,7 +152,7 @@ return res.send("503 : ERROR");
 
 query.on('end', function(){
 if(count == -1 ) {
-res.statusCode = 404 ;
+//res.statusCode = 404 ;
 console.log ( "404 : USERNAME NOT FOUND") ; 
 return res.send("404 : USERNAME NOT FOUND"); 
 }else {
