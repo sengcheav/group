@@ -71,7 +71,32 @@
 					}
 				},"json");
 			});
+			$( "#update").bind("click", function(event,ui){
+				var un = $("#username1").val();
+				var points = $("points").val();
+				var level = $("level").val(); 
+				var token = sessionStorage.getItem('token') ; 
+				$.ajax({
+					type: "POST",
+					url : "https://floating-beyond-1695.herokuapp.com//update/"+ level,	
+					data:{username: un, point : points , tokens: token},
+					success : function(data){
+						if (data == '200 : UPDATE'){
+						alert("success :"+ data);}
+						else if (data == "404 : USERNAME NOT FOUND"){
+						alert("404 : USER NOT FOUND") ; 
+						}
+					},
+					error: function(data) {   
+                                                alert('an error occured: ');
+                                        }
 
+				},"json");
+
+
+
+
+			});
 	    });
     </script>
   </body>
