@@ -79,7 +79,7 @@
 				var level = $("#level").val(); 
 				var token = sessionStorage.getItem('token') ; 
 				alert( "data being send: " + un + " " + points+ " "+ token) ; 
-				if ( points != null && level!=null ){
+				if ( points.length <1  || level.length <1  ){
 				$.ajax({
 					type: "POST",
 					url : "https://floating-beyond-1695.herokuapp.com/update/"+ level,	
