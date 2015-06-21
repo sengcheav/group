@@ -91,7 +91,7 @@ totalpoint : 0 ,
 points_lvl : [10],
 best : [10]
 }
-query = client.query('SELECT COUNT(*) AS COUNT ,TOTALPOINTS, USERNAME , POINTS_LVL , LVL_BEST FROM RANK GROUP BY USERNAME WHERE USERNAME=$1', [user.username]);
+query = client.query('SELECT COUNT(*) AS COUNT ,TOTALPOINTS, USERNAME , POINTS_LVL , LVL_BEST FROM RANK WHERE USERNAME=$1 GROUP BY USERNAME', [user.username]);
 query.on('row', function(result){
 if(result){
 count = result.count;
