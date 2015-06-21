@@ -162,7 +162,7 @@ return res.send("404 : USERNAME NOT FOUND");
                 if(err) {console.log( "err :"+err.message) ; res.statusCode = 503 ; return res.send ("503 : Error at UPDATE" ) ; }  
 		console.log("UPDATED");
 		res.statusCode = 200 ; 
-		res.send("200 : UPDATE") ; 	
+		return res.send("200 : UPDATE") ; 	
 	
 	      }); 
         
